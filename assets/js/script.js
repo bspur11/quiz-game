@@ -19,6 +19,113 @@ function selectAnswer() {
 
 }
 
+var questions = [{
+    question: 'Commonly used data types do not include_______.',
+    answers: [{
+        text: 'Strings',
+        correct: false
+      },
+      {
+        text: 'Numbers',
+        correct: false
+      },
+      {
+        text: 'booleans',
+        correct: true
+      },
+      {
+        text: 'Arrays',
+        correct: false
+      }
+    ]
+  },
+  {
+    question: 'A very useful tool used during development and debugging for printing content to the debugger is:_______',
+    answers: [{
+        text: 'Javascript',
+        correct: false
+      },
+      {
+        text: 'terminal/bash',
+        correct: false
+      },
+      {
+        text: 'for loops',
+        correct: true
+      },
+      {
+        text: 'console.log',
+        correct: false
+      }
+    ]
+  },
+  {
+    question: 'The condition in a if/else statement is enclosed with ________',
+    answer: [{
+        text: 'Quotes',
+        correct: false
+      },
+      {
+        text: 'Curly Brackets',
+        correct: true
+      },
+      {
+        text: 'Parenthesis',
+        correct: false
+      },
+      {
+        text: 'Square Brackets',
+        correct: false
+      }
+    ]
+  },
+  {
+    question: 'String values must be inclosed within _______ when being assigned to variables.',
+    answer: [{
+        text: 'Commas',
+        correct: false
+      },
+      {
+        text: 'Curly Brackets',
+        correct: false
+      },
+      {
+        text: 'Quotes',
+        correct: true
+      },
+      {
+        text: 'Parenthesis',
+        correct: false
+      }
+
+    ]
+
+  },
+  {
+    question: 'Arrays in JavaScript can be used to storee _______.',
+    answer: [{
+        text: 'Numbers and strings',
+        correct: false
+      },
+      {
+        text: 'Other Arrays',
+        correct: false
+      },
+      {
+        text: 'Booleans',
+        correct: false
+      },
+      {
+        text: 'all of the above',
+        correct: true
+      }
+
+
+    ]
+  }
+
+]
+
 
 
 
