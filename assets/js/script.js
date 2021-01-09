@@ -1,176 +1,143 @@
-var startButton = document.getElementById('start-btn');
-var questionContainerElement = document.getElementById('question-container');
+const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
+const questionContainerElement = document.getElementById('question-container')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
 
-startButton.addEventListener('click', startGame);
+var shuffledQuestions, currentQuestionIndex
 
+startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
+})
 
 function startGame() {
-  console.log('Started');
-  startButton.classList.add('hide');
-  questionContainerElement.classList.remove('hide');
-  setNextQuestion();
+  startButton.classList.add('hide')
+  shuffledQuestions = questions.sort(() => Math.random() - .5)
+  currentQuestionIndex = 0
+  questionContainerElement.classList.remove('hide')
+  setNextQuestion()
 }
 
 function setNextQuestion() {
-
+  resetState()
+  showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function selectAnswer() {
-
+function showQuestion(question) {
+  questionElement.innerText = question.question
+  question.answers.forEach(answer => {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    if (answer.correct) {
+      button.dataset.correct = answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonsElement.appendChild(button)
+  })
 }
 
-var questions = [{
-    question: 'Commonly used data types do not include_______.',
+function resetState() {
+  clearStatusClass(document.body)
+  nextButton.classList.add('hide')
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+  }
+}
+
+function selectAnswer(e) {
+  const selectedButton = e.target
+  const correct = selectedButton.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonsElement.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct)
+  })
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove('hide')
+  } else {
+    startButton.innerText = 'Restart'
+    startButton.classList.remove('hide')
+  }
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.add('correct')
+  } else {
+    element.classList.add('wrong')
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove('correct')
+  element.classList.remove('wrong')
+}
+
+const questions = [{
+    question: 'What is 2 + 2?',
     answers: [{
-        text: 'Strings',
-        correct: false
-      },
-      {
-        text: 'Numbers',
-        correct: false
-      },
-      {
-        text: 'booleans',
+        text: '4',
         correct: true
       },
       {
-        text: 'Arrays',
+        text: '22',
         correct: false
       }
     ]
   },
   {
-    question: 'A very useful tool used during development and debugging for printing content to the debugger is:_______',
+    question: 'Who is the best YouTuber?',
     answers: [{
-        text: 'Javascript',
-        correct: false
-      },
-      {
-        text: 'terminal/bash',
-        correct: false
-      },
-      {
-        text: 'for loops',
+        text: 'Web Dev Simplified',
         correct: true
       },
       {
-        text: 'console.log',
+        text: 'Traversy Media',
+        correct: true
+      },
+      {
+        text: 'Dev Ed',
+        correct: true
+      },
+      {
+        text: 'Fun Fun Function',
+        correct: true
+      }
+    ]
+  },
+  {
+    question: 'Is web development fun?',
+    answers: [{
+        text: 'Kinda',
+        correct: false
+      },
+      {
+        text: 'YES!!!',
+        correct: true
+      },
+      {
+        text: 'Um no',
+        correct: false
+      },
+      {
+        text: 'IDK',
         correct: false
       }
     ]
   },
   {
-    question: 'The condition in a if/else statement is enclosed with ________',
-    answer: [{
-        text: 'Quotes',
+    question: 'What is 4 * 2?',
+    answers: [{
+        text: '6',
         correct: false
       },
       {
-        text: 'Curly Brackets',
-        correct: true
-      },
-      {
-        text: 'Parenthesis',
-        correct: false
-      },
-      {
-        text: 'Square Brackets',
-        correct: false
-      }
-    ]
-  },
-  {
-    question: 'String values must be inclosed within _______ when being assigned to variables.',
-    answer: [{
-        text: 'Commas',
-        correct: false
-      },
-      {
-        text: 'Curly Brackets',
-        correct: false
-      },
-      {
-        text: 'Quotes',
-        correct: true
-      },
-      {
-        text: 'Parenthesis',
-        correct: false
-      }
-
-    ]
-
-  },
-  {
-    question: 'Arrays in JavaScript can be used to storee _______.',
-    answer: [{
-        text: 'Numbers and strings',
-        correct: false
-      },
-      {
-        text: 'Other Arrays',
-        correct: false
-      },
-      {
-        text: 'Booleans',
-        correct: false
-      },
-      {
-        text: 'all of the above',
+        text: '8',
         correct: true
       }
-
-
     ]
   }
-
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO: Create an array with five question objects
-
-var questions = [
-
-  {
-    prompt: "What type of brachets are used for an array?\n(a) ()\n(b) {}\n(c) []\n(d) All of the above",
-    answer: "c"
-  },
-  {
-    prompt: "What command is used to add a Child node to a Parent node in Javascript?\n(a) querySelector\n(b) getItemById\n(c) textContent\n(d) appendChild",
-    Answer: "d"
-  },
-  {
-    prompt: "What command in javascript saves strings in local storage?\n(a) localStorage.getItem\n(b) localStorage.appendChild\n(c) localStorage.setItem\n(d) None of the above",
-    answer: "c"
-  },
-  {
-    prompt: "Commonly used data types do not include:\n(a) Numbers\n(b) Strings\n(c) booleans\n(d) alerts",
-    answer: "c",
-  },
-  {
-    prompt: "Arrays in Javascript can be used to store______.\n(a)Numbers\n(b) Strings\n(c) Other Arrays\n(d) All of the above",
-    anxwer: "d",
-  },
-
-]
-
-// TODO: Create a variable to keep track of the score
-
-// TODO: Iterate over the questions array and display each question in a confirmation box
-
-// TODO: Check the user's answer against the correct answer
-
-// TODO: Alert the user if they are correct or wrong. Increment the score accordingly
-
-// TODO: At the end of the game, alert the user with the final score

@@ -25,6 +25,7 @@ body {
 
 
 .container {
+  display: flex;
   width: 800px;
   max-width: 80%;
   height: 500px;
@@ -33,6 +34,7 @@ body {
   box-shadow: 0 0 10px 2px;
   border-radius: 15px;
   padding: 100px 400px 100px 100px;
+
 }
 
 .btn-grid {
@@ -56,11 +58,21 @@ body {
   box-shadow: 0 0 10px 2px gray;
 }
 
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .start-btn,
 .next-btn {
+  display: flex;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
+  margin: 30px 50px;
+
+
 }
 
 .start-btn:hover,
