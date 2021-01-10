@@ -48,6 +48,7 @@ function resetState() {
 }
 
 function selectAnswer(e) {
+
   const selectedButton = e.target
   const correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
@@ -77,67 +78,105 @@ function clearStatusClass(element) {
 }
 
 const questions = [{
-    question: 'What is 2 + 2?',
+    question: 'Commonly used data types do not include______',
     answers: [{
-        text: '4',
+        text: 'Boleans',
         correct: true
       },
       {
-        text: '22',
+        text: 'Other Arrays',
+        correct: false
+      },
+      {
+        text: 'Numbers',
+        correct: true
+      },
+      {
+        text: 'Alerts',
         correct: false
       }
     ]
   },
   {
-    question: 'Who is the best YouTuber?',
+    question: 'A very useful tool used during developemen and debugging for printing content to the debugger is',
     answers: [{
-        text: 'Web Dev Simplified',
+        text: 'JavaScript',
+        correct: false
+      },
+      {
+        text: 'Terminal/Bash',
         correct: true
       },
       {
-        text: 'Traversy Media',
+        text: 'For Loops',
         correct: true
       },
       {
-        text: 'Dev Ed',
-        correct: true
-      },
-      {
-        text: 'Fun Fun Function',
+        text: 'Console log',
         correct: true
       }
     ]
   },
   {
-    question: 'Is web development fun?',
+    question: 'Arrays in JavaScript con be used to store__________?',
     answers: [{
-        text: 'Kinda',
+        text: 'numbers and strings',
         correct: false
       },
       {
-        text: 'YES!!!',
+        text: 'other arrays',
         correct: true
       },
       {
-        text: 'Um no',
+        text: 'booleans',
         correct: false
       },
       {
-        text: 'IDK',
+        text: 'all of the above',
         correct: false
       }
     ]
   },
   {
-    question: 'What is 4 * 2?',
+    question: 'The condition in an if/else statement is enclosed with________?',
     answers: [{
-        text: '6',
+        text: 'quotes',
         correct: false
       },
       {
-        text: '8',
+        text: 'curly brackets',
+        correct: true
+      },
+      {
+        text: 'parenthesis',
+        correct: false
+      },
+      {
+        text: 'square brackets',
         correct: true
       }
     ]
+  },
+  {
+    question: 'String values in JavaScript must be inclosed in _______.',
+    answers: [{
+        text: 'quotes',
+        correct: false
+      },
+      {
+        text: 'curly brackets',
+        correct: true
+      },
+      {
+        text: 'parenthesis',
+        correct: false
+      },
+      {
+        text: 'square brackets',
+        correct: true
+      }
+    ]
+
+
   }
 ]
